@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Sora:wght@400;500;600&family=ZCOOL+KuaiLe&family=Orbitron:wght@400;700;900&display=swap');
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --font-display: "Orbitron", sans-serif;
+  --font-body: "Outfit", sans-serif;
+  --font-sans: "Sora", sans-serif;
+  --font-memory: "ZCOOL KuaiLe", cursive;
+  
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  
+  --color-brand-green: #00ff88;
+  --color-brand-green-muted: #113322;
+  
+  --color-brand-blue: #00d2ff;
+  --color-brand-blue-muted: #002233;
+  
+  --color-brand-orange: #f27d26;
+  
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-card: #141414;
+
+  --animate-reveal: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes reveal {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-brand-orange selection:text-white cursor-crosshair;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-orange;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(242, 125, 38, 0.3);
+  }
+  
+  .mask-horizontal {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .ease-expo {
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  @keyframes slow-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-slow-rotate {
+    animation: slow-rotate 15s linear infinite;
+  }
+
+  .pause-animation {
+    animation-play-state: paused;
+  }
+}
