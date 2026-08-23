@@ -65,23 +65,32 @@ const offlineSubCategories = [
     title: "英雄联盟总决赛 高校嘉年华",
     subtitle: "Outdoor Banner & Display",
     images: [
+      "https://i.postimg.cc/4d98rsy3/wei-xin-tu-pian-20260823165559-1084-87.png",
+      "https://i.postimg.cc/90Hx2KwS/wei-xin-tu-pian-20260823165655-1092-87.png",
       "https://i.postimg.cc/Rh6qK5Yy/1.png",
       "https://i.postimg.cc/02SbNvDq/2.png",
       "https://i.postimg.cc/mgGhzny9/3.png",
       "https://i.postimg.cc/Hx7rR80V/4.png",
       "https://i.postimg.cc/9XdM9hJb/0af95069eeab952221c3903dd6d9a83.jpg",
       "https://i.postimg.cc/pTD2KfYz/0f50ece933fc01bca0019d0b814b3a4.jpg",
-      "https://i.postimg.cc/7YgJVz9R/b70c8dbe383556997b5695fc338c978.jpg"
+      "https://i.postimg.cc/9QkYVKvz/wei-xin-tu-pian-20260824003453-1098-87.jpg",
+      "https://i.postimg.cc/pL3z38Fn/wei-xin-tu-pian-20260824003454-1099-87.jpg",
+      "https://i.postimg.cc/R0fKmF1z/wei-xin-tu-pian-20260824003455-1100-87.jpg",
+      "https://i.postimg.cc/Kz2L82Q4/wei-xin-tu-pian-20260824003457-1102-87.jpg",
+      "https://i.postimg.cc/k4vSVphs/wei-xin-tu-pian-20260824003459-1104-87.jpg",
+      "https://i.postimg.cc/yx58WhBw/wei-xin-tu-pian-20260824003458-1103-87.jpg"
     ]
   },
   {
     id: "off-5",
-    title: "无畏之夜 奖杯设计",
-    subtitle: "Pop-up Store Design",
+    title: "PUBG曼谷游船",
+    subtitle: "Event & Cruise Design",
     images: [
-      "https://i.postimg.cc/SQvMsVPC/mk-INkgs-VAYc-4-01.webp",
-      "https://i.postimg.cc/t40ndJps/mk-HBMvj-Locz-4.webp",
-      "https://i.postimg.cc/25rqJtqR/mk-HBMg-AUHdl-3.webp"
+      "https://i.postimg.cc/4yChSTHn/wei-xin-tu-pian-2026-08-24-005048-961.png",
+      "https://i.postimg.cc/GhCyPd1B/wei-xin-tu-pian-2026-08-24-005118-671.png",
+      "https://i.postimg.cc/8zkf34cC/wei-xin-tu-pian-2026-08-24-005124-523.png",
+      "https://i.postimg.cc/VNpSJcRX/wei-xin-tu-pian-2026-08-24-005105-971.png",
+      "https://i.postimg.cc/XqcX1B0F/wei-xin-tu-pian-2026-08-24-005132-433.png"
     ]
   }
 ];
@@ -145,6 +154,24 @@ const aigcSubCategories = [
 
 const categories: ProjectCategory[] = [
   {
+    id: "offline",
+    title: "线下物料",
+    images: Array.from({ length: 10 }, (_, i) => `https://picsum.photos/seed/event${i}/1600/900`),
+    cover: "https://i.postimg.cc/xTBjXBg4/2F8A3263.jpg"
+  },
+  {
+    id: "kv",
+    title: "游戏海报设计",
+    images: Array.from({ length: 10 }, (_, i) => `https://picsum.photos/seed/game${i}/1600/900`),
+    cover: "https://i.postimg.cc/52z6Lc7K/9b2c418f3dcc239a1cb2414143cd7ef.jpg"
+  },
+  {
+    id: "motion",
+    title: "三维动效",
+    images: [],
+    cover: "https://i.postimg.cc/PqHXqDdH/heng-ban-feng-mian.png"
+  },
+  {
     id: "aigc",
     title: "AIGC",
     images: [
@@ -154,18 +181,6 @@ const categories: ProjectCategory[] = [
       "https://picsum.photos/seed/landscape0/1600/900"
     ],
     cover: "https://i.postimg.cc/dt7Y07Gk/Image.png"
-  },
-  {
-    id: "kv",
-    title: "游戏海报设计",
-    images: Array.from({ length: 10 }, (_, i) => `https://picsum.photos/seed/game${i}/1600/900`),
-    cover: "https://i.postimg.cc/52z6Lc7K/9b2c418f3dcc239a1cb2414143cd7ef.jpg"
-  },
-  {
-    id: "offline",
-    title: "线下物料",
-    images: Array.from({ length: 10 }, (_, i) => `https://picsum.photos/seed/event${i}/1600/900`),
-    cover: "https://i.postimg.cc/xTBjXBg4/2F8A3263.jpg"
   }
 ];
 
@@ -278,7 +293,7 @@ export default function ProjectShowcase() {
           </h3>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {categories.map((cat, index) => (
             <motion.div
               key={cat.id}
@@ -303,8 +318,8 @@ export default function ProjectShowcase() {
               </div>
 
               {/* Title & Exploration text */}
-              <div className="absolute inset-0 z-20 p-6 md:p-10 flex flex-col items-center justify-center text-center">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-sans font-extrabold tracking-wider text-white mb-2 md:mb-4 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="absolute inset-0 z-20 p-6 md:p-8 flex flex-col items-center justify-center text-center">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-sans font-extrabold tracking-wider text-white mb-2 md:mb-4 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                   {cat.title}
                 </h3>
                 <div className="w-12 h-[2px] bg-brand-orange mb-4 md:mb-6 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
@@ -358,7 +373,19 @@ export default function ProjectShowcase() {
           />
         )}
 
-        {selectedCategory && selectedCategory.id !== "kv" && selectedCategory.id !== "offline" && selectedCategory.id !== "aigc" && (
+        {selectedCategory && selectedCategory.id === "motion" && (
+          <GameFolderModal 
+            key="game-folder-modal-motion" 
+            initialSection="motion"
+            onClose={() => setSelectedCategory(null)} 
+            onNavigateToCategory={(catId) => {
+              const target = categories.find(c => c.id === catId);
+              if (target) setSelectedCategory(target);
+            }}
+          />
+        )}
+
+        {selectedCategory && selectedCategory.id !== "kv" && selectedCategory.id !== "offline" && selectedCategory.id !== "aigc" && selectedCategory.id !== "motion" && (
           <motion.div
             key={`other-category-modal-${selectedCategory.id}`}
             initial={{ opacity: 0 }}

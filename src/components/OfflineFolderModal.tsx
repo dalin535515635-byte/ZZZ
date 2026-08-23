@@ -62,23 +62,32 @@ const items: OfflineItem[] = [
     title: "英雄联盟总决赛 高校嘉年华",
     subtitle: "Outdoor Banner & Display",
     images: [
+      "https://i.postimg.cc/4d98rsy3/wei-xin-tu-pian-20260823165559-1084-87.png",
+      "https://i.postimg.cc/90Hx2KwS/wei-xin-tu-pian-20260823165655-1092-87.png",
       "https://i.postimg.cc/Rh6qK5Yy/1.png",
       "https://i.postimg.cc/02SbNvDq/2.png",
       "https://i.postimg.cc/mgGhzny9/3.png",
       "https://i.postimg.cc/Hx7rR80V/4.png",
       "https://i.postimg.cc/9XdM9hJb/0af95069eeab952221c3903dd6d9a83.jpg",
       "https://i.postimg.cc/pTD2KfYz/0f50ece933fc01bca0019d0b814b3a4.jpg",
-      "https://i.postimg.cc/7YgJVz9R/b70c8dbe383556997b5695fc338c978.jpg"
+      "https://i.postimg.cc/9QkYVKvz/wei-xin-tu-pian-20260824003453-1098-87.jpg",
+      "https://i.postimg.cc/pL3z38Fn/wei-xin-tu-pian-20260824003454-1099-87.jpg",
+      "https://i.postimg.cc/R0fKmF1z/wei-xin-tu-pian-20260824003455-1100-87.jpg",
+      "https://i.postimg.cc/Kz2L82Q4/wei-xin-tu-pian-20260824003457-1102-87.jpg",
+      "https://i.postimg.cc/k4vSVphs/wei-xin-tu-pian-20260824003459-1104-87.jpg",
+      "https://i.postimg.cc/yx58WhBw/wei-xin-tu-pian-20260824003458-1103-87.jpg"
     ]
   },
   {
     id: "off-5",
-    title: "无畏之夜 奖杯设计",
-    subtitle: "Pop-up Store Design",
+    title: "PUBG曼谷游船",
+    subtitle: "Event & Cruise Design",
     images: [
-      "https://i.postimg.cc/SQvMsVPC/mk-INkgs-VAYc-4-01.webp",
-      "https://i.postimg.cc/t40ndJps/mk-HBMvj-Locz-4.webp",
-      "https://i.postimg.cc/25rqJtqR/mk-HBMg-AUHdl-3.webp"
+      "https://i.postimg.cc/4yChSTHn/wei-xin-tu-pian-2026-08-24-005048-961.png",
+      "https://i.postimg.cc/GhCyPd1B/wei-xin-tu-pian-2026-08-24-005118-671.png",
+      "https://i.postimg.cc/8zkf34cC/wei-xin-tu-pian-2026-08-24-005124-523.png",
+      "https://i.postimg.cc/VNpSJcRX/wei-xin-tu-pian-2026-08-24-005105-971.png",
+      "https://i.postimg.cc/XqcX1B0F/wei-xin-tu-pian-2026-08-24-005132-433.png"
     ]
   }
 ];
@@ -365,7 +374,7 @@ export default function OfflineFolderModal({ onClose, onNavigateToCategory }: { 
                 <div className="space-y-8 max-w-4xl mx-auto">
                   {it.images.map((img, i) => {
                     const isLOLAdaptive = it.id === "off-4" && i >= 4;
-                    const isPUBGFirst = it.id === "off-6" && i === 0;
+                    const isPUBGFirst = (it.id === "off-5" || it.id === "off-6") && i === 0;
                     const isAdaptive = isLOLAdaptive || isPUBGFirst;
                     const aspectClass = isAdaptive 
                       ? "aspect-auto h-auto" 

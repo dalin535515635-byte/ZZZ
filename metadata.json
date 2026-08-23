@@ -1,5 +1,6 @@
 {
   "name": "ZZ STUDIO",
   "description": "A high-end cinematic visual production studio landing page featuring bold typography and interactive particle transitions.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -16,7 +16,7 @@ const WAVE_PATH = "M0,0 C20,0 30,10 50,20 C70,30 80,40 100,0 L100,100 C80,100 70
 function GalleryItem({ img, isActive, title }: { img: string, isActive: boolean, title?: string }) {
   const is169 = title && [
     "CFH 科隆线下展",
-    "无畏之夜 奖杯设计",
+    "PUBG曼谷游船",
     "BW CF线下学院",
     "游戏视觉设计",
     "创意视觉设计",
@@ -127,7 +127,7 @@ export default function ImageGalleryModal({ images, onClose, title }: { images: 
   const isTiled = title === "穿越火线" || title === "穿越火线 X Bilibili World" || title === "和平精英" || title === "其他";
   const is169 = title && [
     "CFH 科隆线下展",
-    "无畏之夜 奖杯设计",
+    "PUBG曼谷游船",
     "BW CF线下学院",
     "游戏视觉设计",
     "创意视觉设计",
