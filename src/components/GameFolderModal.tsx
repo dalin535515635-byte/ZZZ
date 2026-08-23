@@ -986,7 +986,7 @@ export default function GameFolderModal({
 
   const getPathBreadcrumb = () => {
     if (activeSection === "kv") {
-      return `主视觉设计 / ${currentItem.title}`;
+      return `游戏海报设计 / ${currentItem.title}`;
     } else if (activeSection === "offline") {
       return `线下物料 / ${currentItem.title}`;
     } else {
@@ -1263,7 +1263,7 @@ export default function GameFolderModal({
               </span>
               <span className="text-sm font-bold text-white mt-0.5 flex items-center gap-1.5 hover:text-brand-orange transition-colors truncate">
                 <span className="truncate">
-                  {activeSection === "kv" ? "主视觉设计" : activeSection === "offline" ? "线下物料" : "AIGC"} / {currentItem.title}
+                  {activeSection === "kv" ? "游戏海报设计" : activeSection === "offline" ? "线下物料" : "AIGC"} / {currentItem.title}
                 </span>
                 <span className="text-[10px] text-brand-orange align-middle shrink-0">▼</span>
               </span>
@@ -1437,7 +1437,7 @@ export default function GameFolderModal({
                   </AnimatePresence>
                 </div>
 
-                {/* 3. 第一层级: 主视觉设计 */}
+                {/* 3. 第一层级: 游戏海报设计 */}
                 <div className="space-y-2">
                   <button
                     onClick={() => {
@@ -1456,7 +1456,7 @@ export default function GameFolderModal({
                           <Layers size={16} className="text-brand-orange" />
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-[14px] font-sans font-extrabold tracking-wider text-white group-hover:text-brand-orange transition-colors">主视觉设计</span>
+                          <span className="text-[14px] font-sans font-extrabold tracking-wider text-white group-hover:text-brand-orange transition-colors">游戏海报设计</span>
                           <span className="text-[9px] font-mono font-bold text-white/50 tracking-widest uppercase mt-0.5">
                             KEY VISUAL / {games.length}个项目
                           </span>
@@ -1596,7 +1596,7 @@ export default function GameFolderModal({
                 )}
               </div>
 
-              {/* Level 1: 主视觉设计 */}
+              {/* Level 1: 游戏海报设计 */}
               <div className="space-y-1.5">
                 <button
                   onClick={() => {
@@ -1615,7 +1615,7 @@ export default function GameFolderModal({
                         <Layers size={14} className="text-brand-orange" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[13px] font-sans font-extrabold tracking-wide text-white group-hover:text-brand-orange transition-colors">主视觉设计</span>
+                        <span className="text-[13px] font-sans font-extrabold tracking-wide text-white group-hover:text-brand-orange transition-colors">游戏海报设计</span>
                         <span className="text-[8px] font-mono font-bold text-white/40 tracking-wider uppercase mt-0.5">
                           KEY VISUALS / {games.length}个项目
                         </span>

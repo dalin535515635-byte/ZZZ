@@ -267,7 +267,7 @@ export default function OfflineFolderModal({ onClose, onNavigateToCategory }: { 
                   className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg border border-white/5 bg-neutral-900/30 hover:bg-brand-orange/5 hover:border-brand-orange/50 text-white/70 hover:text-white transition-all text-xs font-semibold tracking-wide"
                 >
                   <Gamepad2 size={13} className="text-brand-orange shrink-0" />
-                  <span>游戏宣发主视觉</span>
+                  <span>游戏海报设计</span>
                 </button>
                 <button
                   onClick={() => onNavigateToCategory?.("aigc")}
@@ -456,7 +456,7 @@ export default function OfflineFolderModal({ onClose, onNavigateToCategory }: { 
                       className="w-full flex items-center gap-2.5 p-2 rounded-lg text-left text-xs text-white/70 hover:text-white hover:bg-brand-orange/10 transition-all border border-white/5 bg-neutral-900/30 font-semibold"
                     >
                       <Gamepad2 size={12} className="text-brand-orange" />
-                      <span>主视觉设计</span>
+                      <span>游戏海报设计</span>
                     </button>
                     <button
                       onClick={() => {

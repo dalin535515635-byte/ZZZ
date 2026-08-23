@@ -157,7 +157,7 @@ const categories: ProjectCategory[] = [
   },
   {
     id: "kv",
-    title: "主视觉设计",
+    title: "游戏海报设计",
     images: Array.from({ length: 10 }, (_, i) => `https://picsum.photos/seed/game${i}/1600/900`),
     cover: "https://i.postimg.cc/52z6Lc7K/9b2c418f3dcc239a1cb2414143cd7ef.jpg"
   },
