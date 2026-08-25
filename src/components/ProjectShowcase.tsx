@@ -166,12 +166,6 @@ const categories: ProjectCategory[] = [
     cover: "https://i.postimg.cc/52z6Lc7K/9b2c418f3dcc239a1cb2414143cd7ef.jpg"
   },
   {
-    id: "motion",
-    title: "三维动效",
-    images: [],
-    cover: "https://i.postimg.cc/PqHXqDdH/heng-ban-feng-mian.png"
-  },
-  {
     id: "aigc",
     title: "AIGC",
     images: [
@@ -373,19 +367,7 @@ export default function ProjectShowcase() {
           />
         )}
 
-        {selectedCategory && selectedCategory.id === "motion" && (
-          <GameFolderModal 
-            key="game-folder-modal-motion" 
-            initialSection="motion"
-            onClose={() => setSelectedCategory(null)} 
-            onNavigateToCategory={(catId) => {
-              const target = categories.find(c => c.id === catId);
-              if (target) setSelectedCategory(target);
-            }}
-          />
-        )}
-
-        {selectedCategory && selectedCategory.id !== "kv" && selectedCategory.id !== "offline" && selectedCategory.id !== "aigc" && selectedCategory.id !== "motion" && (
+        {selectedCategory && selectedCategory.id !== "kv" && selectedCategory.id !== "offline" && selectedCategory.id !== "aigc" && (
           <motion.div
             key={`other-category-modal-${selectedCategory.id}`}
             initial={{ opacity: 0 }}

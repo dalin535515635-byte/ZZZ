@@ -24,17 +24,6 @@ interface OfflineItem {
   images: string[];
 }
 
-interface MotionItem {
-  id: string;
-  title: string;
-  subtitle: string;
-  desc: string;
-  cover: string;
-  videoUrl: string;
-  images: string[];
-  type?: string;
-}
-
 export interface WeaponSkin {
   id: string;
   title: string;
@@ -464,59 +453,6 @@ const games: GameItem[] = [
   }
 ];
 
-const motionItems: MotionItem[] = [
-  {
-    id: "3d_motion_01",
-    title: "三维动效 01",
-    subtitle: "3D Dynamic Motion 01",
-    desc: "",
-    cover: "https://i.postimg.cc/PqHXqDdH/heng-ban-feng-mian.png",
-    images: [],
-    videoUrl: "https://video.zcool.cn/alivod/c4114a60bd0f71eda90a0764a0ec0102.mp4?k=1baed7512e8a539c189a1a00052bdba8&t=6a8b30be",
-    type: "direct_video"
-  },
-  {
-    id: "3d_motion_02",
-    title: "三维动效 02",
-    subtitle: "3D Dynamic Motion 02",
-    desc: "",
-    cover: "https://i.postimg.cc/PqHXqDdH/heng-ban-feng-mian.png",
-    images: [],
-    videoUrl: "https://video.zcool.cn/alivod/d04fc88bcbd471ee801e5420848d0102.mp4?k=1e27b2f6419bb4c84fe7df5dcfc615dd&t=6a8b30be",
-    type: "direct_video"
-  },
-  {
-    id: "3d_motion_03",
-    title: "三维动效 03",
-    subtitle: "3D Dynamic Motion 03",
-    desc: "",
-    cover: "https://i.postimg.cc/PqHXqDdH/heng-ban-feng-mian.png",
-    images: [],
-    videoUrl: "https://video.zcool.cn/alivod/b091f9acccc371ee80436732b78e0102.mp4?k=cf0af00a8d14f428c1563dd5373b503c&t=6a8b30be",
-    type: "direct_video"
-  },
-  {
-    id: "3d_motion_04",
-    title: "三维动效 04",
-    subtitle: "3D Dynamic Motion 04",
-    desc: "",
-    cover: "https://i.postimg.cc/PqHXqDdH/heng-ban-feng-mian.png",
-    images: [],
-    videoUrl: "https://video.zcool.cn/alivod/168db5dde6f54438a8b4ad3e6e5649ef.mp4?k=ffaf0a511d2d1ad8dcaeefb9adfbb9a5&t=6a8b3408",
-    type: "direct_video"
-  },
-  {
-    id: "3d_motion_05",
-    title: "三维动效 05",
-    subtitle: "3D Dynamic Motion 05",
-    desc: "",
-    cover: "https://i.postimg.cc/PqHXqDdH/heng-ban-feng-mian.png",
-    images: [],
-    videoUrl: "https://video.zcool.cn/alivod/760c2d90d7b771edb8e16632b68f0102.mp4?k=7c7865cb53a8de0e05d7b9b2f69e7628&t=6a8b3473",
-    type: "direct_video"
-  }
-];
-
 const offlineItems: OfflineItem[] = [
   {
     id: "off-1",
@@ -845,13 +781,13 @@ export default function GameFolderModal({
   onNavigateToCategory,
   isEmbedded = false
 }: { 
-  initialSection?: "kv" | "offline" | "aigc" | "motion";
+  initialSection?: "kv" | "offline" | "aigc";
   onClose?: () => void; 
   onSelectGame?: (game: any) => void; 
-  onNavigateToCategory?: (catId: "offline" | "aigc" | "kv" | "motion") => void;
+  onNavigateToCategory?: (catId: "offline" | "aigc" | "kv") => void;
   isEmbedded?: boolean;
 }) {
-  const [activeSection, setActiveSection] = useState<"kv" | "offline" | "aigc" | "motion">(initialSection);
+  const [activeSection, setActiveSection] = useState<"kv" | "offline" | "aigc">(initialSection);
   const [activeIdx, setActiveIdx] = useState<number>(0);
   
   // AIGC specific menu states - default to "kv" (游戏视觉设计) -> "kv-sanguo" (创意视觉设计)
@@ -886,7 +822,6 @@ export default function GameFolderModal({
   const [isKvExpanded, setIsKvExpanded] = useState<boolean>(initialSection === "kv");
   const [isOfflineExpanded, setIsOfflineExpanded] = useState<boolean>(initialSection === "offline");
   const [isAigcExpanded, setIsAigcExpanded] = useState<boolean>(initialSection === "aigc");
-  const [isMotionExpanded, setIsMotionExpanded] = useState<boolean>(initialSection === "motion");
   const [expandedAigcFolders, setExpandedAigcFolders] = useState<Record<string, boolean>>({
     "3d": false,
     "kv": initialSection === "aigc",
@@ -902,7 +837,6 @@ export default function GameFolderModal({
     setIsKvExpanded(activeSection === "kv");
     setIsOfflineExpanded(activeSection === "offline");
     setIsAigcExpanded(activeSection === "aigc");
-    setIsMotionExpanded(activeSection === "motion");
     setExpandedAigcFolders({
       "3d": activeSection === "aigc" && activeAigcCategory === "3d",
       "kv": activeSection === "aigc" && activeAigcCategory === "kv",
@@ -918,9 +852,7 @@ export default function GameFolderModal({
     ? games[activeIdx] 
     : activeSection === "offline" 
       ? offlineItems[activeIdx] 
-      : activeSection === "motion"
-        ? motionItems[activeIdx]
-        : (currentAigcItem as any);
+      : (currentAigcItem as any);
 
   // Priority Image Preloader:
   // 1. Load currently viewed project's images first.
@@ -1068,8 +1000,6 @@ export default function GameFolderModal({
       return `游戏海报设计 / ${currentItem?.title || ''}`;
     } else if (activeSection === "offline") {
       return `线下物料 / ${currentItem?.title || ''}`;
-    } else if (activeSection === "motion") {
-      return `三维动效 / ${currentItem?.title || ''}`;
     } else {
       return `AIGC / ${activeAigcCategoryObj.title} / ${currentItem?.title || ''}`;
     }
@@ -1083,13 +1013,6 @@ export default function GameFolderModal({
       };
     }
     const id = currentItem.id;
-    
-    if (activeSection === "motion") {
-      return {
-        color: "rgba(8, 18, 28, 0.45)",
-        glow: "rgba(6, 182, 212, 0.18)"
-      };
-    }
     
     // --- 1. Game KV Projects ---
     if (id === "cf") {
@@ -1345,7 +1268,7 @@ export default function GameFolderModal({
               </span>
               <span className="text-sm font-bold text-white mt-0.5 flex items-center gap-1.5 hover:text-brand-orange transition-colors truncate">
                 <span className="truncate">
-                  {activeSection === "kv" ? "游戏海报设计" : activeSection === "offline" ? "线下物料" : activeSection === "motion" ? "三维动效" : "AIGC"} / {currentItem?.title || ''}
+                  {activeSection === "kv" ? "游戏海报设计" : activeSection === "offline" ? "线下物料" : "AIGC"} / {currentItem?.title || ''}
                 </span>
                 <span className="text-[10px] text-brand-orange align-middle shrink-0">▼</span>
               </span>
@@ -1492,73 +1415,7 @@ export default function GameFolderModal({
                   </AnimatePresence>
                 </div>
 
-                {/* 3. 第三层级: 三维动效 */}
-                <div className="space-y-2">
-                  <button
-                    onClick={() => {
-                      const nextVal = !isMotionExpanded;
-                      setIsMotionExpanded(nextVal);
-                      if (nextVal) {
-                        setIsOfflineExpanded(false);
-                        setIsKvExpanded(false);
-                        setIsAigcExpanded(false);
-                      }
-                      setActiveSection("motion");
-                      setActiveIdx(0);
-                    }}
-                    className="group w-full h-[58px] rounded-xl border border-white/10 hover:border-cyan-500/30 flex items-center text-left bg-neutral-900/90 hover:bg-neutral-900 shadow-lg transition-all active:scale-[0.98] select-none cursor-pointer"
-                  >
-                    <div className="flex items-center justify-between w-full px-3.5">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-cyan-500/15 border border-cyan-500/30 backdrop-blur-sm shrink-0">
-                          <Video size={16} className="text-cyan-400" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-[14px] font-sans font-extrabold tracking-wider text-white group-hover:text-cyan-400 transition-colors">三维动效</span>
-                          <span className="text-[9px] font-mono font-bold text-white/50 tracking-widest uppercase mt-0.5">
-                            3D MOTION / {motionItems.length}个项目
-                          </span>
-                        </div>
-                      </div>
-                      <ChevronDown size={15} className={`text-white/40 group-hover:text-cyan-400 transition-colors duration-300 shrink-0 ${isMotionExpanded ? "rotate-180" : ""}`} />
-                    </div>
-                  </button>
-
-                  <AnimatePresence>
-                    {isMotionExpanded && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden pl-3.5 border-l border-cyan-500/25 space-y-1 mt-1"
-                      >
-                        {motionItems.map((item, idx) => {
-                          const isActive = activeSection === "motion" && activeIdx === idx;
-                          return (
-                            <button
-                              key={item.id}
-                              onClick={() => {
-                                setActiveSection("motion");
-                                setActiveIdx(idx);
-                                setIsMenuOpen(false);
-                              }}
-                              className={`w-full flex items-center justify-between p-2 rounded-xl text-left transition-all ${
-                                isActive 
-                                  ? "bg-cyan-500/15 text-white border border-cyan-500/30 font-extrabold text-[12.5px]" 
-                                  : "text-white/60 hover:text-white text-[12.5px]"
-                              }`}
-                            >
-                              <span>{item.title}</span>
-                              {isActive && <Check size={14} className="text-cyan-400 shrink-0" />}
-                            </button>
-                          );
-                        })}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* 4. 第四层级: AIGC */}
+                {/* 3. 第三层级: AIGC */}
                 <div className="space-y-2">
                   <button
                     onClick={() => {
@@ -1567,7 +1424,6 @@ export default function GameFolderModal({
                       if (nextVal) {
                         setIsKvExpanded(false);
                         setIsOfflineExpanded(false);
-                        setIsMotionExpanded(false);
                       }
                     }}
                     className="group w-full h-[58px] rounded-xl border border-white/10 hover:border-purple-500/30 flex items-center text-left bg-neutral-900/90 hover:bg-neutral-900 shadow-lg transition-all active:scale-[0.98] select-none cursor-pointer"
@@ -1778,64 +1634,6 @@ export default function GameFolderModal({
                 )}
               </div>
 
-              {/* Level 1: 三维动效 */}
-              <div className="space-y-1.5">
-                <button
-                  onClick={() => {
-                    const nextVal = !isMotionExpanded;
-                    setIsMotionExpanded(nextVal);
-                    if (nextVal) {
-                      setIsKvExpanded(false);
-                      setIsOfflineExpanded(false);
-                      setIsAigcExpanded(false);
-                    }
-                    setActiveSection("motion");
-                    setActiveIdx(0);
-                  }}
-                  className="group w-full h-[50px] rounded-lg border border-white/[0.05] hover:border-cyan-500/30 flex items-center text-left bg-neutral-900/80 hover:bg-neutral-900 shadow-sm transition-all select-none cursor-pointer"
-                >
-                  <div className="flex items-center justify-between w-full px-2.5">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-md flex items-center justify-center bg-cyan-500/15 border border-cyan-500/30 backdrop-blur-sm shrink-0">
-                        <Video size={14} className="text-cyan-400" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[13px] font-sans font-extrabold tracking-wide text-white group-hover:text-cyan-400 transition-colors">三维动效</span>
-                        <span className="text-[8px] font-mono font-bold text-white/40 tracking-wider uppercase mt-0.5">
-                          3D MOTION / {motionItems.length}个项目
-                        </span>
-                      </div>
-                    </div>
-                    <ChevronDown size={14} className={`text-white/30 group-hover:text-cyan-400 transition-colors duration-300 shrink-0 ${isMotionExpanded ? "rotate-180" : ""}`} />
-                  </div>
-                </button>
-
-                {isMotionExpanded && (
-                  <div className="ml-3 pl-3.5 border-l border-cyan-500/25 space-y-1.5 pt-1 pb-1">
-                    {motionItems.map((item, idx) => {
-                      const isActive = activeSection === "motion" && activeIdx === idx;
-                      return (
-                        <button
-                          key={item.id}
-                          onClick={() => {
-                            setActiveSection("motion");
-                            setActiveIdx(idx);
-                          }}
-                          className={`group relative flex items-center gap-2 py-1.5 px-2.5 rounded-lg text-left text-[12px] md:text-[13px] transition-all w-full border ${
-                            isActive
-                              ? "bg-cyan-500/10 border-cyan-500/30 text-white font-extrabold shadow-[0_3px_12px_rgba(6,182,212,0.12)]"
-                              : "border-transparent text-white/50 hover:text-white hover:bg-white/5"
-                          }`}
-                        >
-                          <span className="absolute -left-[14px] top-1/2 -translate-y-1/2 w-1.5 h-[1px] bg-white/15" />
-                          <span className="truncate">{item.title}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
               {/* Level 1: AIGC */}
               <div className="space-y-1.5">
                 <button
@@ -1845,7 +1643,6 @@ export default function GameFolderModal({
                     if (nextVal) {
                       setIsKvExpanded(false);
                       setIsOfflineExpanded(false);
-                      setIsMotionExpanded(false);
                     }
                   }}
                   className="group w-full h-[50px] rounded-lg border border-white/[0.05] hover:border-purple-500/30 flex items-center text-left bg-neutral-900/80 hover:bg-neutral-900 shadow-sm transition-all select-none cursor-pointer"
@@ -1955,16 +1752,11 @@ export default function GameFolderModal({
                           AIGC
                         </span>
                       )}
-                      {activeSection === "motion" && (
-                        <span className="text-[9px] md:text-[10px] font-mono font-black px-2 py-0.5 rounded bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 ml-2">
-                          3D MOTION
-                        </span>
-                      )}
                     </div>
                     <h3 className="text-2xl sm:text-3xl md:text-5xl font-display font-extrabold tracking-tight text-white mb-2 md:mb-4">
                       {currentItem.title}
                     </h3>
-                    <div className={`w-12 md:w-16 h-[2px] mt-2 md:mt-4 ${activeSection === "aigc" ? "bg-purple-500" : activeSection === "motion" ? "bg-cyan-500" : "bg-brand-orange"}`} />
+                    <div className={`w-12 md:w-16 h-[2px] mt-2 md:mt-4 ${activeSection === "aigc" ? "bg-purple-500" : "bg-brand-orange"}`} />
                   </div>
                 )}
 
@@ -3769,48 +3561,6 @@ export default function GameFolderModal({
                             </div>
                           ))}
                         </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* TYPE K: DIRECT VIDEO PLAYER (三维动效) */}
-                {(activeSection === "motion" || currentItem.type === "direct_video") && (
-                  <div className="max-w-4xl mx-auto space-y-6 pt-2 pb-8">
-                    <div className="group relative aspect-[16/9] w-full bg-neutral-950 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] transition-all duration-500 hover:border-cyan-500/40">
-                      <video
-                        key={currentItem.videoUrl || `motion-vid-${activeIdx}`}
-                        src={currentItem.videoUrl}
-                        controls
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="auto"
-                        className="w-full h-full object-contain bg-black"
-                      />
-                    </div>
-
-                    {/* Clean Video Switcher Bar for Motion Section */}
-                    {activeSection === "motion" && motionItems.length > 1 && (
-                      <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
-                        {motionItems.map((item, idx) => {
-                          const isCur = activeIdx === idx;
-                          return (
-                            <button
-                              key={item.id}
-                              onClick={() => setActiveIdx(idx)}
-                              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 cursor-pointer ${
-                                isCur
-                                  ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-                                  : "bg-white/5 text-white/60 border border-white/10 hover:bg-white/10 hover:text-white"
-                              }`}
-                            >
-                              <span className={`w-1.5 h-1.5 rounded-full ${isCur ? "bg-cyan-400 animate-pulse" : "bg-white/30"}`} />
-                              <span>{item.title}</span>
-                            </button>
-                          );
-                        })}
                       </div>
                     )}
                   </div>
