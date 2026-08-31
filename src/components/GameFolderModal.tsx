@@ -455,6 +455,26 @@ const games: GameItem[] = [
 
 const offlineItems: OfflineItem[] = [
   {
+    id: "off-6",
+    title: "MG&PUBGM 品牌联动设计",
+    subtitle: "Brand Crossover & Event Design",
+    images: [
+      "https://i.postimg.cc/gj2rFvGw/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-01.png",
+      "https://i.postimg.cc/bvfJNXzN/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-03.png",
+      "https://i.postimg.cc/hjpPrfVn/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-04.png",
+      "https://i.postimg.cc/Y002yMxs/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-05.png",
+      "https://i.postimg.cc/WbDbGpzD/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-06.png",
+      "https://i.postimg.cc/JzZrFTj2/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-07.png",
+      "https://i.postimg.cc/25YkN4wF/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-08.png",
+      "https://i.postimg.cc/FRWNSwQZ/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-09.png",
+      "https://i.postimg.cc/XNPnYM8T/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-10.png",
+      "https://i.postimg.cc/d11KJnTJ/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-11.png",
+      "https://i.postimg.cc/z3mmSr2W/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-12.png",
+      "https://i.postimg.cc/3rzWb0Pd/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-13.png",
+      "https://i.postimg.cc/TYmh8YxT/MG-PUBGM-pin-pai-lian-dong-she-ji-fang-xiang0625-14.png"
+    ]
+  },
+  {
     id: "off-1",
     title: "2025 CFS电竞嘉年华",
     subtitle: "Event Booth Design",
@@ -1126,10 +1146,16 @@ export default function GameFolderModal({
         glow: "rgba(6, 182, 212, 0.20)"   // Cyber hextech cyan-blue glow
       };
     }
-    if (id === "off-5" || id === "off-6") {
+    if (id === "off-5") {
       return { 
         color: "rgba(234, 179, 8, 0.08)", // Bangkok hot tropical sun yellow base
         glow: "rgba(234, 179, 8, 0.20)"   // Radiant golden solar energy glow
+      };
+    }
+    if (id === "off-6") {
+      return { 
+        color: "rgba(249, 115, 22, 0.08)", // MG & PUBG Racing dynamic orange base
+        glow: "rgba(249, 115, 22, 0.20)"   // Radiant automotive collaboration glow
       };
     }
 
